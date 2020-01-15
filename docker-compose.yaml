@@ -1,0 +1,9 @@
+version: '2.4'
+services:
+  dehydrated:
+    build:
+      context: .
+    image: docker-registry.koppelvlak.net/dehydrated
+    volumes:
+      - ./www:/www
+      - ./dehydrated:/etc/dehydrated
