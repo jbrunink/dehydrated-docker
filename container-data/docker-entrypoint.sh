@@ -15,7 +15,7 @@ if [ "${1}" = 'sh' ] || [ "${1}" = 'bash' ]; then
 fi
 
 if [[ ! -z "$@" ]]; then 
-	/sbin/su-exec dehydrated "/opt/dehydrated/dehydrated" "${@}"
+	exec /sbin/su-exec dehydrated "/opt/dehydrated/dehydrated" "${@}"
 fi
 
-/sbin/su-exec dehydrated "/bin/sh" -c 'trap "exit" TERM;  while :; do /opt/dehydrated/dehydrated --cron; sleep 300 & wait ${!}; done;'
+exec /sbin/su-exec dehydrated "/bin/sh" -c 'trap "exit" TERM;  while :; do /opt/dehydrated/dehydrated --cron; sleep 300 & wait ${!}; done;'
